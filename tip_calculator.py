@@ -12,9 +12,15 @@ def validate_user_input():
             sale_tax = overall_total_bill * 0.10
             overall_total_bill = overall_total_bill + sale_tax
             # Prompt the user for the % tip they'd like to leave
-            tip_percentage = int(input("What percentage tip would you like to give? (Example: 5, 10,15, 20): "))
+            tip_percentage = int(
+                input(
+                    "What percentage tip would you like to give? (Example: 5, 10,15, 20): "
+                )
+            )
             if tip_percentage < 10:
-                print("Seriously, you should rethink this! Or better yet leave right now, remove yourself from my section!")
+                print(
+                    "Seriously, you should rethink this! Or better yet leave right now, remove yourself from my section!"
+                )
             elif tip_percentage >= 10 or tip_percentage <= 20:
                 print("That was nice of you!")
             else:
@@ -24,27 +30,32 @@ def validate_user_input():
             print("\n")
             if num_of_people == 0:
                 print("Yo, seriously a dine and dash.. You're childish!")
-                num_of_people = int(input("Seriously, how many people are splitting the bill?: "))
+                num_of_people = int(
+                    input("Seriously, how many people are splitting the bill?: ")
+                )
             elif num_of_people == 1:
                 amount_to_pay_per_person = "%.2f" % round(
-                float(
-                    ((tip_percentage / 100 + 1) * overall_total_bill) / num_of_people
-                ),
-                2,)
+                    float(
+                        ((tip_percentage / 100 + 1) * overall_total_bill)
+                        / num_of_people
+                    ),
+                    2,
+                )
             # Calculate the value each person owes based on the bill and tips the user entered
             # I don’t like the omission of the trailing zero, so I am going to adjust the code to ensure it always prints with 2 decimal places. To do this, add “%.2f” % ahead of the round function.
             else:
                 amount_to_pay_per_person = "%.2f" % round(
                     float(
-                        ((tip_percentage / 100 + 1) * overall_total_bill) / num_of_people
+                        ((tip_percentage / 100 + 1) * overall_total_bill)
+                        / num_of_people
                     ),
                     2,
                 )
             # Print the $ amount of the tip
             tip_amount = "%.2f" % float(tip_percentage / 100 * overall_total_bill)
             # convert total bill and tip amount to floats so they can be added
-            overall_total_bill_float =  round(float(overall_total_bill), 2)
-            tip_amount_float =  round(float(tip_amount),2)
+            overall_total_bill_float = round(float(overall_total_bill), 2)
+            tip_amount_float = round(float(tip_amount), 2)
             tip_and_total = "%.2f" % float(overall_total_bill_float + tip_amount_float)
             # The total bill (including tip)
             print(
@@ -53,5 +64,9 @@ def validate_user_input():
             return
         # Print what each person needs to pay
         except ValueError:
-            print("You did not enter a valid number, seriously you need to pay your bill.")
+            print(
+                "You did not enter a valid number, seriously you need to pay your bill."
+            )
+
+
 validate_user_input()
