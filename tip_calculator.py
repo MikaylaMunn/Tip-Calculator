@@ -12,7 +12,7 @@ def validate_user_input():
             sale_tax = overall_total_bill * 0.10
             overall_total_bill = overall_total_bill + sale_tax
             # Prompt the user for the % tip they'd like to leave
-            tip_percentage = int(input("What % tip would you like to give?: "))
+            tip_percentage = int(input("What percentage tip would you like to give? (Example: 5, 10,15, 20): "))
             if tip_percentage < 10:
                 print("Seriously, you should rethink this! Or better yet leave right now, remove yourself from my section!")
             elif tip_percentage >= 10 or tip_percentage <= 20:
@@ -22,7 +22,10 @@ def validate_user_input():
             # Prompt the user for the # of people splitting the bill
             num_of_people = int(input("How many people are splitting the bill?: "))
             print("\n")
-            if num_of_people == 1:
+            if num_of_people == 0:
+                print("Yo, seriously a dine and dash.. You're childish!")
+                num_of_people = int(input("Seriously, how many people are splitting the bill?: "))
+            elif num_of_people == 1:
                 amount_to_pay_per_person = "%.2f" % round(
                 float(
                     ((tip_percentage / 100 + 1) * overall_total_bill) / num_of_people
