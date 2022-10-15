@@ -7,7 +7,7 @@ def checking_user_input_for_num():
     # Add a try/except block here because what if the user doesn't enter in a number
     while not is_total:
         # Prompt the user to enter the amount on the bill includes the sales tax
-        total_bill_from_user = input("What is the total bill? (Example: 20 for $20.00): ")
+        total_bill_from_user = input("What is the total bill? (Example: 20 for $20.00 or 13.50 for $13.50): ")
         try:
             total_bill_from_user = float(total_bill_from_user)
             # Assume there is a 10% sales tax. Don't forget to add this into the total bill!
@@ -67,7 +67,22 @@ def checking_user_input_for_num():
             print(
                 f"Tip amount: ${tip_amount}\nTotal bill including tip: ${tip_and_total}\nEach person owes: ${amount_to_pay_per_person}"
             )
-            return
+            run_again = ''
+            run_again = input('Would you like to run Tip Calculator again? Enter y for yes and n for no. ')
+            if run_again == 'y' or run_again == 'Y':
+                checking_user_input_for_num()
+            elif run_again != 'y' or run_again != 'Y' or run_again != 'n' or run_again != 'N':
+                run_again = input(f"I'm sorry, you typed an invalid key!\nPlease read the directions!\nWould you like to run Tip Calculator again? Enter y for yes and n for no. ")
+                if run_again == 'y' or run_again == 'Y':
+                    checking_user_input_for_num()
+                elif run_again != 'y' or run_again != 'Y' or run_again != 'n' or run_again != 'N':
+                    run_again = input(f"Please read the directions, if you type another invalid key you will exit the program!\nWould you like to run Tip Calculator again? Enter y for yes and n for no. ")
+                else:
+                   print('Thank you and have a nice day!')
+                return 
+            else:
+                print('Thank you and have a nice day!')
+                return
         # Print what each person needs to pay
         except ValueError:
             print(
