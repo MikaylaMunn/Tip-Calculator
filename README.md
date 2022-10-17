@@ -1,7 +1,7 @@
 # Tip-Calculator
 ## Install
     - Python3 
-        - `brew install python3`
+        - `install python3`
 ## Summary
     -It is a bill and tip calculator based on the user input.
 ## How to use it
